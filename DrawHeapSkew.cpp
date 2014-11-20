@@ -21,11 +21,21 @@ int main(int argc, char** argv)
 
    ListArrayIterator<CD>* iter = cds->iterator();
    HeapSkew<CD>* sh = new HeapSkew<CD>(&CD::compare_items);
+
+   cout << "before iter" << endl;
+
+   int i = 0;
+
    while(iter->hasNext())
    {
       CD* cd = iter->next();
       sh->heapInsert(cd);
+     i++;
+     cout << i << endl;
    }
+
+   cout << "after iter" << endl;
+
    delete iter;
    //sh->heapRemove();
    //sh->heapRemove();
