@@ -37,19 +37,33 @@ while(true)
    HeapSkew<CD>* sh = new HeapSkew<CD>(&CD::compare_items);
 
    ListArrayIterator<CD>* iter = cds->iterator();
+
+   int i = 0;
+
    while(iter->hasNext())
    {
       CD* cd = iter->next();
       sh->heapInsert(cd);
+      i++;
+     //cout << i << endl;
    }
    delete iter;
 
+   //cout << "after delete iter" << endl;
+
+   i = 0;
+
    while(!(sh->heapIsEmpty()))
    {
+     //cout << "before remove" << endl;
+
       CD* cd = sh->heapRemove();
-      cd->displayCD();
+      //cd->displayCD();
+      i++;
+      //cout << i << endl;
    }
 
+   //cout << "before delete sh" << endl;
    delete sh;
 }
    deleteCDs(cds);
